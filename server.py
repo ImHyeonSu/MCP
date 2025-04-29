@@ -2,14 +2,11 @@ from typing import Any
 import httpx
 from mcp.server.fastmcp import FastMCP
 
-# 서버 초기화
+# 初期化
 mcp = FastMCP("name-origin")
 
-# API 기반 URL
 base_url = "https://api.nationalize.io"
 
-
-# 예제도 정의
 @mcp.tool()
 async def predict_origin(name: str) -> dict:
     """Nationalize APIを使用して、指定された名前の出身国を予測します
