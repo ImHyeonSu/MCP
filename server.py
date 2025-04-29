@@ -12,13 +12,13 @@ base_url = "https://api.nationalize.io"
 # 예제도 정의
 @mcp.tool()
 async def predict_origin(name: str) -> dict:
-    """Nationalize API를 사용하여 주어진 이름의 출신 국가를 예측합니다
+    """Nationalize APIを使用して、指定された名前の出身国を予測します
 
-    Args:
-        name (str): 출신 국가를 예측할 이름
+    引数:
+        name (str): 出身国を予測する名前
 
-    Returns:
-        dict: 이름의 출신 국가
+    戻り値:
+        dict: 名前の出身国
     """
     async with httpx.AsyncClient() as client:
         response = await client.get(f"{base_url}/name={name}")
@@ -28,13 +28,13 @@ async def predict_origin(name: str) -> dict:
 # 배치도 정의
 @mcp.tool()
 async def batch_predict(names: list[str]) -> dict:
-    """여러 이름의 출신 국가를 한 번에 예측합니다
+    """複数の名前の出身国を一度に予測します
 
-    Args:
-        names (list[str]): 출신 국가를 예측할 이름 목록
+    引数:
+        names (list[str]): 出身国を予測する名前のリスト
 
-    Returns:
-        dict: 이름들의 출신 국가
+    戻り値:
+        dict: 名前ごとの出身国
     """
     results = {}
     for name in names:
@@ -43,5 +43,5 @@ async def batch_predict(names: list[str]) -> dict:
 
 
 if __name__ == "__main__":
-    print("이름 출신 국가 서버 시작 중...")
+    print("名前の出身国サーバー起動中...")
     mcp.run(transport="stdio")
